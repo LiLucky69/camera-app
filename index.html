@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Are</title>
+</head>
+<body>
+    <h1>You Are</h1>
+    <video id="video" width="320" height="240" autoplay></video>
+    <script>
+        async function openCamera() {
+            const constraints = {
+                video: {
+                    facingMode: "user"
+                }
+            };
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                const videoElement = document.getElementById('video');
+                videoElement.srcObject = stream;
+            } catch (error) {
+                console.error("Error accessing camera: ", error);
+            }
+        }
+        openCamera();
+    </script>
+</body>
+</html>
